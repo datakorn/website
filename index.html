@@ -4,19 +4,21 @@ layout: home
     <div class="container" role="main">
       {% for post in site.posts %}
       <article class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" lang="{{ post.lang | default: "en" }}">
-        <div>
+        <header>
           <span class="number">{{ post.number }}</span>
-          <time>{{ post.date | date: "%b %d, %Y" }}</time>
-          <address><a href="{{ post.location.link }}">{{ post.location.label }}</a></address>
-        </div>
+          <time class="date">{{ post.date | date: "%b %d, %Y" }}</time>
+          <address class="location"><a href="{{ post.location.link }}">{{ post.location.label }}</a></address>
+        </header>
         <section>
           <h4>{{ post.topic }}</h4>
-          <a href="{{ post.source.link }}">🚀 {{ post.source.label }}</a>
-          <p>
+          <a href="{{ post.source.link }}" class="source">🚀 {{ post.source.label }}</a>
+          <p class="description">
             {{ post.description }}
           </p>
-          <p>👏 {{ post.organiser }} + {{ post.members.size | minus: 1 }}</p>
         </section>
+        <footer>
+          <p class="attendees">👏 {{ post.organiser }} + {{ post.members.size | minus: 1 }}</p>
+        </footer>
       </article>
       {% endfor %}
     </div>

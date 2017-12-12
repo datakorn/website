@@ -1,4 +1,4 @@
-    <header>
+    <header class="header">
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@
         </g>
       </svg>
     </header>
-    <aside>
+    <aside class="aside">
       <div>
         <h2>{{ site.description }} Collective’s members
           {% for member in site.members %}{% if forloop.last %} and {% else %}, {% endif %}<a href="{{ member.url }}">{{ member.name }}</a>{% endfor %}.
