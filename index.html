@@ -1,24 +1,62 @@
----
-layout: home
----
-    <div class="container" role="main">
-      {% for post in site.posts %}
-      <article class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" lang="{{ post.lang | default: "en" }}">
-        <header>
-          <span class="number">{{ post.number }}</span>
-          <time class="date">{{ post.date | date: "%b %d, %Y" }}</time>
-          <address class="location"><a href="{{ post.location.link }}">{{ post.location.label }}</a></address>
-        </header>
-        <section>
-          <h4>{{ post.topic }}</h4>
-          <a href="{{ post.source.link }}" class="source">🚀 {{ post.source.label }}</a>
-          <p class="description">
-            {{ post.description }}
-          </p>
-        </section>
-        <footer>
-          <p class="attendees">👏 {{ post.organiser }} + {{ post.members.size | minus: 1 }}</p>
-        </footer>
-      </article>
-      {% endfor %}
-    </div>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>𝕯𝖆𝖙𝖆𝖐𝖔𝖗𝖓</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			#app {
+			  display: flex;
+			  height: 100vh;
+			  width: 100vw;
+			  justify-content: center;
+			  align-items: center;
+			  transition-duration: 20ms;
+			}
+
+			svg {
+				width: 100%;
+			}
+
+			path {
+				transition-duration: 20ms;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" v-bind:style="{ backgroundColor: bc }">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.9 45.5">
+			  <path
+			  	d="M91.68 23.46l-.05 4.69 2.88 1.34-4.33 2.82-2.76-1.81.25-12.62-2.62-1.83 3.89-2.59 3 2.17-.15 6.46 4.6-4.62L93.73 16l3.86-2.42 3.57 2.08-6.23 5.45 6.69 8.89-3.73 2.4zM112.91 32.65l-6.62-2.71V18.18l7.72-4.74 6.82 3-.12 12.27zm3.18-3.06l.12-10.78-5.11-2.08-.19 10.86zM138.09 32.28l-4-7.8-2-.53v4.2l2.89 1.59-4.33 2.57-2.76-2.06.11-12.37-2.92-1.88 4.11-2.35 3 1.81 3.3-2 4.42 1.5-.16 5.04-2.69 1.81 5.08 8.36zm-2.45-10.75l.05-3.77-3.37-.85-.13 5.32 2-1.19zM151.28 17l-.22 11.45 2.69 1.27-4.13 2.49-2.79-1.79.2-12.56-2.45-1.86 3.65-2.5 3.08 2.25 3.27-2 5.4 2.29-.31 12.33 2.39 1.12-3.84 2.64-3-1.79.32-11.75zM71.78 21.34h2l2.38-3.65-.1 3.65h4.17l.08-5.63L73 13.44l-3.83 2.34 5.33 1.35-2.72 4.21zM80.12 28.52l.05-3.28h-4.26l-.07 5.31 2.93 1.78 3.99-2.49-2.64-1.32zM71.4 25.24h-2.13l-3.43 5.31 3.91 1.85 3.3-2.76-3.66-1 2.01-3.4zM55.2 21.34h4.16l.11-4.48 3.32.17 2.35-3.23-12.23-.34-2.24 3.13 4.64.12-.11 4.63zM59.27 25.24h-4.16l-.12 5.26 2.77 1.81 4.32-2.81-2.88-1.35.07-2.91zM37.43 25.24H35.3l-3.43 5.31 3.91 1.85 3.3-2.76-3.66-1 2.01-3.4zM37.81 21.34h2.01l2.37-3.65-.1 3.65h4.17l.08-5.63-7.31-2.27-3.83 2.34 5.33 1.35-2.72 4.21zM46.2 25.24h-4.26l-.07 5.31 2.93 1.78 3.99-2.49-2.64-1.32.05-3.28zM24.15 25.24l-.07 4.23-5.33-1.2 1.47-1.07-.21-1.96h-4.18l.38 3.2-2.15 1.74 6.6 2.27 7.84-3.76.05-3.45h-4.4zM15.08 18.96l.29 2.38h4.24l-.39-3.77 5.03 1.39-.04 2.38h4.4l.07-5.07-11.64-3.42-4.2 2.91 5.32 1.54-3.08 1.66z"
+			  	v-bind:style="{ fill: fc }" />
+			</svg>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+			  el: '#app',
+			  data: {
+			  	bc: '#673AB7',
+			  	fc: '#f0f0f1'
+			  },
+			  created: function () {
+			    window.addEventListener('mousemove', _.throttle(this.mouse_monitor, 20))
+			  },
+			  methods: {
+			    mouse_monitor: function () {
+			    	const c = function () {
+			    		return _.random(0, 255)
+			    	}
+			    	this.bc = `rgb(${c()}, ${c()}, ${c()})`
+			    	this.fc = `rgb(${c()}, ${c()}, ${c()})`
+			    }
+			  }
+			})
+		</script>
+	</body>
+</html>
