@@ -62,7 +62,7 @@
 			  	fc: '#ffffff'
 			  },
 			  created: function () {
-			  	_.forEach(['mousemove', 'resize', 'click', 'mousedown', 'touchstart', 'touchend', 'touchcancel', 'touchmove'], event => {
+			  	_.forEach(['mousemove', 'resize', 'click', 'mousedown', 'touchstart', 'touchmove'], event => {
 			  		window.addEventListener(event, _.throttle(this.mouse_monitor, 20))
 			  	})
 			  },
