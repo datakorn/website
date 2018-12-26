@@ -45,7 +45,9 @@
 			  	fc: '#f0f0f1'
 			  },
 			  created: function () {
-			    window.addEventListener('mousemove', _.throttle(this.mouse_monitor, 20))
+			  	_.forEach(['mousemove', 'resize', 'click', 'mousedown'], event => {
+			  		window.addEventListener(event, _.throttle(this.mouse_monitor, 20))
+			  	})
 			  },
 			  methods: {
 			    mouse_monitor: function () {
